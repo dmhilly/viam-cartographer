@@ -682,6 +682,7 @@ void SLAMServiceImpl::ProcessDataAndStartSavingMaps(double data_start_time) {
                                 viam::io::filename_prefix.length(),
                             file.find(".pcd")));
 	    LOG(INFO) << "File time: " << file_time;
+	    LOG(INFO) << "data start time: " << data_start_time;
             if (file_time < data_start_time) {
                 file = GetNextDataFile();
                 continue;
