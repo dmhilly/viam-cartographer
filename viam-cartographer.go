@@ -387,7 +387,7 @@ func (cartoSvc *cartographerService) StartSLAMProcess(ctx context.Context) error
 		return errors.Wrap(err, "problem adding slam process")
 	}
 
-	cartoSvc.logger.Debug("starting slam process")
+	cartoSvc.logger.Info("starting slam process")
 
 	if err = cartoSvc.slamProcess.Start(ctx); err != nil {
 		return errors.Wrap(err, "problem starting slam process")

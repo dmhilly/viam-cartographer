@@ -114,7 +114,7 @@ func GetAndSaveData(ctx context.Context, dataDirectory string, lidar lidar.Lidar
 			logger.Warnw("Skipping this scan due to error", "error", err)
 			return "", nil
 		}
-		return "", err
+		return "", errors.Wrap(err, "error getting lidar data")
 	}
 
 	// If the server provided timestamps correlated with the point cloud, extract the time

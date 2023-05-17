@@ -520,7 +520,8 @@ double SLAMServiceImpl::SetUpSLAM() {
 void SLAMServiceImpl::RunSLAM() {
     LOG(INFO) << "Setting up cartographer";
     double data_start_time = SetUpSLAM();
-    LOG(INFO) << "Starting to run cartographer";
+    LOG(INFO) << "Starting to run cartographer !!!!!!!!!!!!!!";
+    LOG(INFO) << "Data start time: " << data_start_time;
     ProcessDataAndStartSavingMaps(data_start_time);
     LOG(INFO) << "Done running cartographer";
 }
@@ -570,7 +571,8 @@ std::string SLAMServiceImpl::GetNextDataFileOnline() {
                 file_list_online[file_list_online.size() - 2];
             if (to_return.compare(current_file_online) != 0) {
                 current_file_online = to_return;
-                return to_return;
+                LOG(INFO) << "online file name: " << to_return;
+		return to_return;
             }
         }
         VLOG(1) << "No new files found";
@@ -679,6 +681,7 @@ void SLAMServiceImpl::ProcessDataAndStartSavingMaps(double data_start_time) {
                 file.substr(file.find(viam::io::filename_prefix) +
                                 viam::io::filename_prefix.length(),
                             file.find(".pcd")));
+	    LOG(INFO) << "File time: " << file_time;
             if (file_time < data_start_time) {
                 file = GetNextDataFile();
                 continue;
